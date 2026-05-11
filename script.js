@@ -56,8 +56,6 @@ async function translateText() {
   let actualSource = source;
   let actualTarget = target;
 
-  // Hinglish support
-
   if(source === "hinglish"){
     actualSource = "hi";
   }
@@ -77,14 +75,10 @@ async function translateText() {
 
     const data = await response.json();
 
-    console.log(data);
-
     clearInterval(window.loaderInterval);
 
     const translated =
       data.responseData.translatedText;
-
-    // Convert to Hinglish
 
     let finalText = translated;
 
@@ -96,13 +90,9 @@ async function translateText() {
 
     typeEffect(finalText);
 
-    saveHistory(text, finalText);
-
   }
 
   catch (error) {
-
-    console.log(error);
 
     output.value =
       "Translation failed";
@@ -149,19 +139,8 @@ function speakText() {
   const text =
     document.getElementById("outputText").value;
 
-  if (text.trim() === "") {
-
-    alert("No translated text");
-
-    return;
-  }
-
   const speech =
     new SpeechSynthesisUtterance(text);
-
-  speech.rate = 1;
-
-  speech.pitch = 1;
 
   window.speechSynthesis.speak(speech);
 }
@@ -174,34 +153,11 @@ function swapLanguages() {
   const target =
     document.getElementById("targetLang");
 
-  const temp = source.value;
+  let temp = source.value;
 
   source.value = target.value;
 
   target.value = temp;
-}
-
-function saveHistory(original, translated) {
-
-  const history =
-    document.getElementById("history");
-
-  const div =
-    document.createElement("div");
-
-  div.classList.add("history-item");
-
-  div.innerHTML = `
-
-    <strong>Original:</strong>
-    <p>${original}</p>
-
-    <strong>Translated:</strong>
-    <p>${translated}</p>
-
-  `;
-
-  history.prepend(div);
 }
 
 function startVoice() {
@@ -212,7 +168,7 @@ function startVoice() {
   ) {
 
     alert(
-      "Speech Recognition not supported in this browser"
+      "Speech Recognition not supported"
     );
 
     return;
@@ -228,37 +184,22 @@ function startVoice() {
 
   recognition.start();
 
-  recognition.onstart = function () {
-
-    document.getElementById(
-      "micButton"
-    ).innerHTML = "🎙️";
-  };
-
-  recognition.onend = function () {
-
-    document.getElementById(
-      "micButton"
-    ).innerHTML =
-      '<i class="fa-solid fa-microphone"></i>';
-  };
-
-  recognition.onresult = function (event) {
-
-    const transcript =
-      event.results[0][0].transcript;
+  recognition.onresult = function(event){
 
     document.getElementById(
       "inputText"
-    ).value = transcript;
+    ).value =
+      event.results[0][0].transcript;
 
     updateCounter();
   };
+}
 
-  recognition.onerror = function () {
+function toggleTheme(){
 
-    alert("Voice recognition failed");
-  };
+  document.body.classList.toggle(
+    "light-mode"
+  );
 }
 
 function convertToHinglish(text){
@@ -274,9 +215,7 @@ function convertToHinglish(text){
     "नाम":"naam",
     "क्या":"kya",
     "है":"hai",
-    "मैं":"main",
-    "भारत":"bharat",
-    "से":"se"
+    "मैं":"main"
 
   };
 
