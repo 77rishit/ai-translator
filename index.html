@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>AI Translator</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- FONT AWESOME -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+  <!-- CSS -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+
+  <div class="background"></div>
+
+  <!-- FLOATING BLOBS -->
+
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="container">
+
+    <!-- TITLE -->
+
+    <h1>
+      <i class="fa-solid fa-language"></i>
+      AI Translator
+    </h1>
+
+    <p class="subtitle">
+      Smart multilingual translation powered by AI
+    </p>
+
+    <!-- MAIN CARD -->
+
+    <div class="card">
+
+      <!-- TOP BAR -->
+
+      <div class="top-bar">
+
+        <div class="counter">
+          Characters:
+          <span id="charCount">0</span>
+        </div>
+
+        <!-- MIC BUTTON -->
+
+        <button
+          id="micButton"
+          onclick="startVoice()"
+        >
+          <i class="fa-solid fa-microphone"></i>
+        </button>
+
+      </div>
+
+      <!-- INPUT -->
+
+      <textarea
+        id="inputText"
+        placeholder="Type or speak your text here..."
+        oninput="updateCounter()"
+      ></textarea>
+
+      <!-- CONTROLS -->
+
+      <div class="controls">
+
+        <!-- SOURCE -->
+
+        <select id="sourceLang">
+
+          <option value="en">
+            English
+          </option>
+
+          <option value="hi">
+            Hindi
+          </option>
+
+          <option value="hinglish">
+            Hinglish
+          </option>
+
+          <option value="gu">
+            Gujarati
+          </option>
+
+          <option value="fr">
+            French
+          </option>
+
+          <option value="es">
+            Spanish
+          </option>
+
+          <option value="de">
+            German
+          </option>
+
+        </select>
+
+        <!-- SWAP -->
+
+        <button
+          class="swap-btn"
+          onclick="swapLanguages()"
+        >
+          <i class="fa-solid fa-right-left"></i>
+        </button>
+
+        <!-- TARGET -->
+
+        <select id="targetLang">
+
+          <option value="hi">
+            Hindi
+          </option>
+
+          <option value="hinglish">
+            Hinglish
+          </option>
+
+          <option value="en">
+            English
+          </option>
+
+          <option value="gu">
+            Gujarati
+          </option>
+
+          <option value="fr">
+            French
+          </option>
+
+          <option value="es">
+            Spanish
+          </option>
+
+          <option value="de">
+            German
+          </option>
+
+        </select>
+
+      </div>
+
+      <!-- TRANSLATE -->
+
+      <button
+        class="translate-btn"
+        onclick="translateText()"
+      >
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+        Translate
+      </button>
+
+      <!-- OUTPUT -->
+
+      <div class="output-section">
+
+        <div class="output-header">
+
+          <h3>
+            Translated Text
+          </h3>
+
+          <div class="output-buttons">
+
+            <!-- COPY -->
+
+            <button onclick="copyText()">
+
+              <i class="fa-regular fa-copy"></i>
+
+            </button>
+
+            <!-- SPEAK -->
+
+            <button onclick="speakText()">
+
+              <i class="fa-solid fa-volume-high"></i>
+
+            </button>
+
+          </div>
+
+        </div>
+
+        <textarea
+          id="outputText"
+          readonly
+          placeholder="Translation appears here..."
+        ></textarea>
+
+      </div>
+
+    </div>
+
+    <!-- HISTORY -->
+
+    <div class="history-card">
+
+      <h2>
+        <i class="fa-solid fa-clock-rotate-left"></i>
+
+        Translation History
+      </h2>
+
+      <div id="history"></div>
+
+    </div>
+
+  </div>
+
+  <!-- JS -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
