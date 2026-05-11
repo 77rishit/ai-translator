@@ -24,7 +24,8 @@ A modern AI-powered multilingual translation web application built using HTML, C
 
 ## 📸 Screenshots
 
-<img width="1710" height="938" alt="Screenshot 2026-05-11 at 10 21 27 AM" src="https://github.com/user-attachments/assets/3a0db4b4-a68f-409a-8539-fcd7f92cdc02" />
+<img width="1710" height="952" alt="Screenshot 2026-05-11 at 10 49 55 AM" src="https://github.com/user-attachments/assets/f5184dfc-8c85-4adf-ae3b-a4b439e4b7ac" />
+
 
 
 ## 🔥 Live Demo
